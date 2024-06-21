@@ -57,17 +57,17 @@ def analyze_email_reply_by_gpt(email_reply,description,supplier,amount,tone):
                     User purchase order details are below:
                     Description of purchase order is: {description}
                     Supplier name from we need to request negotiation is: {supplier}
-                    Amount of purchase order is: {amount}
+                    Amount of purchase order is: {amount}. Do not add any currency symbol in amount.
                     User email content which you need to analyse is: {email_reply} .
 
-                    Your final output should be in this JSON format: {raw_json}
+                    Your final output should be in this JSON format with proper <br> tag to maintain paragraph spacing: {raw_json}
 
             '''
 
         messages = [
             {"role": "system", "content": system_message},
+            {"role": "user", "content": f"Email template should be <br> format to maintain correct paragraph formatting."},
             {"role": "user", "content": f"Return only JSON format, do not write anything other than Filled JSON."},
-            {"role": "user", "content": f"Email template should be in the format of JSON using some new line syntax to maintain correct paragraph formatting."},
         ]
 
 

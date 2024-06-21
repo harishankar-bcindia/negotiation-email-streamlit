@@ -85,7 +85,7 @@ def analyze_email_reply_by_gpt(email_reply,description,supplier,amount,tone):
         jsonify_response = response.choices[0].message.content
         output = handling_gpt_ouput(jsonify_response)
         logging.info(output)
-        return output
+        return output[0]
     except Exception as exp:
         logging.exception(f"Something is wrong with  gpt_call_to_fill_raw_json: {exp}")
         return None
